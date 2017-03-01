@@ -22,6 +22,7 @@
 
 //System Libraries
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 using namespace std;
 
@@ -34,13 +35,15 @@ using namespace std;
 const int COLS = 30;
 
 //Function Prototypes
-void count(char, int);
+int count(char[][COLS], char, int);
 
 //Executable code begins here! Always begins in Main
 int main(int argc, char** argv) {
     //Declare Variables
     const int ROWS = 3;
     char table[ROWS][COLS] = {};
+    char rain = 'R', cloud = 'C', sun = 'S';
+    int juneR, juneS, juneC, julyR, julyS, julyC, augR, augS, augC;
     
     //Input Values
     ifstream in;
@@ -53,14 +56,33 @@ int main(int argc, char** argv) {
     }
     
     in.close();
-    
+    cout<<"\t\tCHART"<<endl<<endl;
+    cout<<"Day\t";
+    for (int d=0;d<COLS;d++) cout<<d+1<<setw(4);
+    cout<<endl;
     for (int c=0; c<ROWS; c++) {
+        c==0?cout<<"June\t":c==1?cout<<"July\t":cout<<"August\t";
         for (int i=0; i<COLS; i++) {
-            cout<<table[c][i]<<" ";
+            cout<<table[c][i]<<setw(4);
         }
         cout<<endl;
     }
+    cout<<endl;
     
+    juneR = count(table, rain, 0);
+    juneS = count(table, sun, 0);
+    juneC = count(table, cloud, 0);
+    julyR = count(table, rain, 1);
+    julyS = count(table, sun, 1);
+    julyC = count(table, cloud, 1);
+    augR = count(table, rain, 2);
+    augS = count(table, sun, 2);
+    augC = count(table, cloud, 2);
+    
+    cout<<"\tJUNE\tJULY\tAUGUST"<<endl;
+    cout<<"Rainy:\t"<<juneR<<"\t"<<julyR<<"\t"<<augR<<endl;
+    cout<<"Sunny:\t"<<juneS<<"\t"<<julyS<<"\t"<<augS<<endl;
+    cout<<"Cloudy:\t"<<juneC<<"\t"<<julyC<<"\t"<<augC<<endl;
     
     //Process by mapping inputs to outputs
     
@@ -71,8 +93,10 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void count(char table, int r) {
+int count(char table[][COLS], char w, int r) {
+    int rec = 0;
     for (int c=0; c<COLS; c++) {
-        if 
+        if (table[r][c]==w) rec++;
     }
+    return rec;
 }
