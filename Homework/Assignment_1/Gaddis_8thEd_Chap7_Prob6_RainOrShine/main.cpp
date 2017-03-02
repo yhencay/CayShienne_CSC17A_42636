@@ -35,7 +35,7 @@ using namespace std;
 const int COLS = 30;
 
 //Function Prototypes
-int count(char[][COLS], char, int);
+int count(char[][COLS], char, int); //Count how many characters in char array
 
 //Executable code begins here! Always begins in Main
 int main(int argc, char** argv) {
@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
     const int ROWS = 3;
     char table[ROWS][COLS] = {};
     char rain = 'R', cloud = 'C', sun = 'S';
-    int juneR, juneS, juneC, julyR, julyS, julyC, augR, augS, augC;
+    int juneR, juneS, juneC, julyR, julyS, julyC, augR, augS, augC, highest;
     
     //Input Values
     ifstream in;
@@ -56,10 +56,13 @@ int main(int argc, char** argv) {
     }
     
     in.close();
+    
     cout<<"\t\tCHART"<<endl<<endl;
     cout<<"Day\t";
     for (int d=0;d<COLS;d++) cout<<d+1<<setw(4);
     cout<<endl;
+    
+    //Display Array
     for (int c=0; c<ROWS; c++) {
         c==0?cout<<"June\t":c==1?cout<<"July\t":cout<<"August\t";
         for (int i=0; i<COLS; i++) {
@@ -69,6 +72,7 @@ int main(int argc, char** argv) {
     }
     cout<<endl;
     
+    //Process by mapping inputs to outputs
     juneR = count(table, rain, 0);
     juneS = count(table, sun, 0);
     juneC = count(table, cloud, 0);
@@ -78,16 +82,18 @@ int main(int argc, char** argv) {
     augR = count(table, rain, 2);
     augS = count(table, sun, 2);
     augC = count(table, cloud, 2);
-    
-    cout<<"\tJUNE\tJULY\tAUGUST"<<endl;
-    cout<<"Rainy:\t"<<juneR<<"\t"<<julyR<<"\t"<<augR<<endl;
-    cout<<"Sunny:\t"<<juneS<<"\t"<<julyS<<"\t"<<augS<<endl;
-    cout<<"Cloudy:\t"<<juneC<<"\t"<<julyC<<"\t"<<augC<<endl;
-    
-    //Process by mapping inputs to outputs
-    
+      
     //Output values
-        
+    cout<<"\tJUNE\tJULY\tAUGUST"<<endl;
+    cout<<"Rainy: \t"<<juneR<<"\t"<<julyR<<"\t"<<augR<<endl;
+    cout<<"Sunny: \t"<<juneS<<"\t"<<julyS<<"\t"<<augS<<endl;
+    cout<<"Cloudy:\t"<<juneC<<"\t"<<julyC<<"\t"<<augC<<endl;
+    cout<<endl;
+    
+    if (juneR>julyR&&juneR>augR) cout<<"LARGEST NUMBER OF RAINY DAYS: JUNE, "<<juneR<<" Days"<<endl;        //Determine which month has the most rainy days
+    else if (julyR>juneR&&julyR>augR) cout<<"LARGEST NUMBER OF RAINY DAYS: JULY, "<<julyR<<" Days"<<endl;
+    else cout<<"LARGEST NUMBER OF RAINY DAYS: AUGUST, "<<augR<<" Days"<<endl; 
+    
     //Exit stage right! - This is the 'return 0' call
 	
     return 0;
