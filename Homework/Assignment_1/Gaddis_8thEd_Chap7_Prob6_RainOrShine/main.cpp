@@ -32,7 +32,7 @@ using namespace std;
 //Such as PI, Vc, -> Math/Science values
 //as well as conversions from one system of measurements
 //to another
-const int COLS = 30;
+const int COLS = 30;        //2D Array Column Size
 
 //Function Prototypes
 int count(char[][COLS], char, int); //Count how many characters in char array
@@ -40,13 +40,15 @@ int count(char[][COLS], char, int); //Count how many characters in char array
 //Executable code begins here! Always begins in Main
 int main(int argc, char** argv) {
     //Declare Variables
-    const int ROWS = 3;
-    char table[ROWS][COLS] = {};
-    char rain = 'R', cloud = 'C', sun = 'S';
-    int juneR, juneS, juneC, julyR, julyS, julyC, augR, augS, augC, highest;
+    const int ROWS = 3;                 //Row Size
+    char table[ROWS][COLS] = {};        //2D Character array
+    char rain = 'R', cloud = 'C', sun = 'S';    //Character equivalent
+    int juneR, juneS, juneC, julyR, julyS,
+        julyC, augR, augS, augC, highest;   //Variable for results of counting
     
     //Input Values
-    ifstream in;
+    //Instantiate and Open Files
+    ifstream in;                   
     in.open("RainOrShine.txt");
     
     for (int c=0; c<ROWS; c++) {
@@ -59,12 +61,12 @@ int main(int argc, char** argv) {
     
     cout<<"\t\tCHART"<<endl<<endl;
     cout<<"Day\t";
-    for (int d=0;d<COLS;d++) cout<<d+1<<setw(4);
+    for (int d=0;d<COLS;d++) cout<<d+1<<setw(4);        //Day Count
     cout<<endl;
     
     //Display Array
     for (int c=0; c<ROWS; c++) {
-        c==0?cout<<"June\t":c==1?cout<<"July\t":cout<<"August\t";
+        c==0?cout<<"June\t":c==1?cout<<"July\t":cout<<"August\t";       //Display Month per count
         for (int i=0; i<COLS; i++) {
             cout<<table[c][i]<<setw(4);
         }
@@ -76,8 +78,8 @@ int main(int argc, char** argv) {
     juneR = count(table, rain, 0);
     juneS = count(table, sun, 0);
     juneC = count(table, cloud, 0);
-    julyR = count(table, rain, 1);
-    julyS = count(table, sun, 1);
+    julyR = count(table, rain, 1);             //Call function for counting of
+    julyS = count(table, sun, 1);              //rainy, sunny, cloudy per month
     julyC = count(table, cloud, 1);
     augR = count(table, rain, 2);
     augS = count(table, sun, 2);
@@ -90,7 +92,8 @@ int main(int argc, char** argv) {
     cout<<"Cloudy:\t"<<juneC<<"\t"<<julyC<<"\t"<<augC<<endl;
     cout<<endl;
     
-    if (juneR>julyR&&juneR>augR) cout<<"LARGEST NUMBER OF RAINY DAYS: JUNE, "<<juneR<<" Days"<<endl;        //Determine which month has the most rainy days
+    //Determine which month has the most rainy days and output
+    if (juneR>julyR&&juneR>augR) cout<<"LARGEST NUMBER OF RAINY DAYS: JUNE, "<<juneR<<" Days"<<endl;        
     else if (julyR>juneR&&julyR>augR) cout<<"LARGEST NUMBER OF RAINY DAYS: JULY, "<<julyR<<" Days"<<endl;
     else cout<<"LARGEST NUMBER OF RAINY DAYS: AUGUST, "<<augR<<" Days"<<endl; 
     
@@ -99,10 +102,16 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+//**************************** Count Function ***********************************
+//Description: Count how many times an argument occurs in the array
+//Inputs:   No inputs but utilizes input file from main
+//Outputs:  Returns how many the argument occured
+//******************************************************************************
+
 int count(char table[][COLS], char w, int r) {
-    int rec = 0;
+    int rec = 0;                    //Static Variable
     for (int c=0; c<COLS; c++) {
-        if (table[r][c]==w) rec++;
+        if (table[r][c]==w) rec++;      //Increment if argument occurred
     }
     return rec;
 }
