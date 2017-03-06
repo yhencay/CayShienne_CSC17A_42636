@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Shienne Cay
- * Created on February 23, 2017, 11:18 AM
+ * Created on March 5, 2017, 11:18 AM
  * Purpose: Homework Rain Or Shine
  * 
  *      Problem: An amateur meteorologist wants to keep track of weather 
@@ -102,10 +102,10 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-//**************************** Count Function ***********************************
+//**************************** Count Function **********************************
 //Description: Count how many times an argument occurs in the array
 //Inputs:   No inputs but utilizes input file from main
-//Outputs:  Returns how many the argument occured
+//Outputs:  Returns how many the argument occurred
 //******************************************************************************
 
 int count(char table[][COLS], char w, int r) {

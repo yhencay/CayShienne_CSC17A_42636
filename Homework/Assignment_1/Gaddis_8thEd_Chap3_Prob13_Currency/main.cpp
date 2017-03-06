@@ -48,8 +48,8 @@ int main(int argc, char** argv) {
     //Output values
     cout<<setprecision(2)<<fixed<<showpoint;
     cout<<"\nUS DOLLAR:\t$"<<dollar<<endl<<endl;
-    cout<<"YEN:\t "<<yen<<endl;                     //Display Results
-    cout<<"EURO:\t "<<euro<<endl;
+    cout<<"YEN:\t ¥"<<yen<<endl;                     //Display Results
+    cout<<"EURO:\t €"<<euro<<endl;
     
     //Exit stage right! - This is the 'return 0' call
 	
