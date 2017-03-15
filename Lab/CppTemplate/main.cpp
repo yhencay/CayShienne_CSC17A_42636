@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Shienne Cay
- * Created on March 2, 2017, 11:40 AM
+ * Created on March 7, 2017, 9:20 PM
  * Purpose: Homework 
  * 
  *      Problem: 
