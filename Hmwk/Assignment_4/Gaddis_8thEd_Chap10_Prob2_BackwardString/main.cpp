@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Shienne Cay
  * Created on April 1, 2017, 9:20 PM
- * Purpose: Homework #1 Backward String
+ * Purpose: Homework #2 Backward String
  * 
  * Problem: Write a function that accepts a pointer to a C-string as an argument 
  * and displays its contents backward. For instance, if the string argument is 
@@ -23,7 +23,6 @@ using namespace std;
 //to another
 
 //Function Prototypes
-short cntChar(char [], int);
 void bckChar(char *, int);
 
 //Executable code begins here! Always begins in Main
@@ -31,7 +30,6 @@ int main(int argc, char** argv) {
     //Declare Variables
     const int SIZE = 80;
     char data[SIZE];
-    short numChar;
     
     //Input Values
     cout<<"Enter 1-79 number of characters. Characters after 79th will be ignored!"<<endl;
