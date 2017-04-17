@@ -1,0 +1,298 @@
+\hypertarget{main_8cpp}{}\section{C\+:/\+Users/rcc/\+Desktop/\+Monkey\+Game\+\_\+\+V1\+\_\+\+Copy4\+Five\+\_\+\+Start3/main.cpp File Reference}
+\label{main_8cpp}\index{C\+:/\+Users/rcc/\+Desktop/\+Monkey\+Game\+\_\+\+V1\+\_\+\+Copy4\+Five\+\_\+\+Start3/main.\+cpp@{C\+:/\+Users/rcc/\+Desktop/\+Monkey\+Game\+\_\+\+V1\+\_\+\+Copy4\+Five\+\_\+\+Start3/main.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$ctime$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include \char`\"{}Array.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_card}{Card} $\ast$ \hyperlink{main_8cpp_a393e894f49659f14d3297676ef9b1630}{fil\+Deck} (int, int $\ast$, fstream \&, string)
+\item 
+int $\ast$ \hyperlink{main_8cpp_a9823ed0f5f423a71e59a4d30336da4c8}{index} (int)
+\item 
+void \hyperlink{main_8cpp_ad37e2c912e6a5d19f98a07b181fc05d7}{shuffle} (int $\ast$, int)
+\item 
+void \hyperlink{main_8cpp_a34acea64b410e7ba9caa280f3fbb82cd}{destroy} (\hyperlink{struct_card}{Card} $\ast$)
+\item 
+void \hyperlink{main_8cpp_af552d168803dcb6248ff0db7e04004da}{srt\+Ary} (\hyperlink{struct_card}{Card} $\ast$, int)
+\item 
+void \hyperlink{main_8cpp_a75fd8251c249946719f55b92e16510ae}{rw\+Swap1} (\hyperlink{struct_card}{Card} $\ast$, int)
+\item 
+void \hyperlink{main_8cpp_a1108d41b0185ef77633a3d911ea975df}{rw\+Swap2} (\hyperlink{struct_card}{Card} $\ast$, int)
+\item 
+void \hyperlink{main_8cpp_af94d039de9785b668e79867ad8855bc8}{shw\+Crd1} (\hyperlink{struct_card}{Card} $\ast$, char)
+\item 
+void \hyperlink{main_8cpp_aa8cbd9d7f3b513aca104261d4a7328de}{shw\+Crd2} (\hyperlink{struct_card}{Card} $\ast$, char)
+\item 
+void \hyperlink{main_8cpp_ad2275c8f6e05493e36030978fd37be19}{shw\+Both} (\hyperlink{struct_card}{Card} $\ast$, char)
+\item 
+void \hyperlink{main_8cpp_a054138f9e47083ebe11e05b56c206cda}{shw\+Ply1} (\hyperlink{struct_card}{Card} $\ast$, int\mbox{[}$\,$\mbox{]}, int)
+\item 
+void \hyperlink{main_8cpp_abe098fd907fd6bb9246fdc356a372688}{shw\+Ply2} (\hyperlink{struct_card}{Card} $\ast$, int\mbox{[}$\,$\mbox{]}, int)
+\item 
+bool \hyperlink{main_8cpp_a01dbbbcd6513fbd975e5f9ce37867f33}{valid8} (\hyperlink{struct_card}{Card} $\ast$, short, short, bool)
+\item 
+bool \hyperlink{main_8cpp_ad1ead62302f2ef1e295f2d8cda84ee77}{valid82} (\hyperlink{struct_card}{Card} $\ast$, short, short, bool)
+\item 
+void \hyperlink{main_8cpp_a0ed206b3e27737b82561e7e7f66aaa92}{srt\+Num} (int\mbox{[}$\,$\mbox{]}, int)
+\item 
+void \hyperlink{main_8cpp_aa39832acaaec1e70f0e340d8052bc719}{pnt\+Sfar} (int, int)
+\item 
+void \hyperlink{main_8cpp_aae65c4c886bdf6f948cf9de2e002d10f}{both\+Lft} (\hyperlink{struct_card}{Card} $\ast$, int\mbox{[}$\,$\mbox{]}, int\mbox{[}$\,$\mbox{]}, bool, int)
+\item 
+void \hyperlink{main_8cpp_ad8c775de7c0fa73e60f6ca9ecc3ef9d0}{ply1\+Lft} (\hyperlink{struct_card}{Card} $\ast$, bool, int\mbox{[}$\,$\mbox{]}, int)
+\item 
+void \hyperlink{main_8cpp_a973f1eea5100a16335753a3c3e4d47af}{ply2\+Lft} (\hyperlink{struct_card}{Card} $\ast$, bool, int\mbox{[}$\,$\mbox{]}, int)
+\item 
+void \hyperlink{main_8cpp_ac1792aeb630e39f33a7b4119e2d7892e}{shw\+Play} (\hyperlink{struct_card}{Card} $\ast$, bool, int\mbox{[}$\,$\mbox{]}, int\mbox{[}$\,$\mbox{]}, int)
+\item 
+bool \hyperlink{main_8cpp_acab67fc47ae7ac07fbb98fe0e1ad0eac}{check1} (int\mbox{[}$\,$\mbox{]}, short, short, int)
+\item 
+bool \hyperlink{main_8cpp_a1ee1fb6e9912b2f2db69641f216a9fe5}{check2} (int\mbox{[}$\,$\mbox{]}, int\mbox{[}$\,$\mbox{]}, bool, short, short, int)
+\item 
+bool \hyperlink{main_8cpp_a804810e22db4f7dfa2123948e53e0211}{finish} (int\mbox{[}$\,$\mbox{]}, int\mbox{[}$\,$\mbox{]}, int)
+\item 
+int \hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\item 
+bool \hyperlink{main_8cpp_a4caa91a1b16a7616d7e084f182865444}{entry} (short e\mbox{[}$\,$\mbox{]}, short s, short num)
+\item 
+void \hyperlink{main_8cpp_ac58a6e1d61400fbd9ca9429e4c822319}{name} (char p\mbox{[}$\,$\mbox{]}, const int N\+S\+I\+ZE)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{main.\+cpp@{main.\+cpp}!both\+Lft@{both\+Lft}}
+\index{both\+Lft@{both\+Lft}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{both\+Lft(\+Card $\ast$, int[], int[], bool, int)}{bothLft(Card *, int[], int[], bool, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void both\+Lft (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{, }
+\item[{int}]{\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{\mbox{[}$\,$\mbox{]}, }
+\item[{bool}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_aae65c4c886bdf6f948cf9de2e002d10f}{}\label{main_8cpp_aae65c4c886bdf6f948cf9de2e002d10f}
+\index{main.\+cpp@{main.\+cpp}!check1@{check1}}
+\index{check1@{check1}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{check1(int[], short, short, int)}{check1(int[], short, short, int)}}]{\setlength{\rightskip}{0pt plus 5cm}bool check1 (
+\begin{DoxyParamCaption}
+\item[{int}]{t\mbox{[}$\,$\mbox{]}, }
+\item[{short}]{frst, }
+\item[{short}]{scnd, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_acab67fc47ae7ac07fbb98fe0e1ad0eac}{}\label{main_8cpp_acab67fc47ae7ac07fbb98fe0e1ad0eac}
+\index{main.\+cpp@{main.\+cpp}!check2@{check2}}
+\index{check2@{check2}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{check2(int[], int[], bool, short, short, int)}{check2(int[], int[], bool, short, short, int)}}]{\setlength{\rightskip}{0pt plus 5cm}bool check2 (
+\begin{DoxyParamCaption}
+\item[{int}]{t1\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{t2\mbox{[}$\,$\mbox{]}, }
+\item[{bool}]{p, }
+\item[{short}]{frst, }
+\item[{short}]{scnd, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a1ee1fb6e9912b2f2db69641f216a9fe5}{}\label{main_8cpp_a1ee1fb6e9912b2f2db69641f216a9fe5}
+\index{main.\+cpp@{main.\+cpp}!destroy@{destroy}}
+\index{destroy@{destroy}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{destroy(\+Card $\ast$)}{destroy(Card *)}}]{\setlength{\rightskip}{0pt plus 5cm}void destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a34acea64b410e7ba9caa280f3fbb82cd}{}\label{main_8cpp_a34acea64b410e7ba9caa280f3fbb82cd}
+\index{main.\+cpp@{main.\+cpp}!entry@{entry}}
+\index{entry@{entry}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{entry(short e[], short s, short num)}{entry(short e[], short s, short num)}}]{\setlength{\rightskip}{0pt plus 5cm}bool entry (
+\begin{DoxyParamCaption}
+\item[{short}]{e\mbox{[}$\,$\mbox{]}, }
+\item[{short}]{s, }
+\item[{short}]{num}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a4caa91a1b16a7616d7e084f182865444}{}\label{main_8cpp_a4caa91a1b16a7616d7e084f182865444}
+\index{main.\+cpp@{main.\+cpp}!fil\+Deck@{fil\+Deck}}
+\index{fil\+Deck@{fil\+Deck}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{fil\+Deck(int, int $\ast$, fstream \&, string)}{filDeck(int, int *, fstream &, string)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Card} $\ast$ fil\+Deck (
+\begin{DoxyParamCaption}
+\item[{int}]{s, }
+\item[{int $\ast$}]{ind, }
+\item[{fstream \&}]{in, }
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a393e894f49659f14d3297676ef9b1630}{}\label{main_8cpp_a393e894f49659f14d3297676ef9b1630}
+\index{main.\+cpp@{main.\+cpp}!finish@{finish}}
+\index{finish@{finish}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{finish(int[], int[], int)}{finish(int[], int[], int)}}]{\setlength{\rightskip}{0pt plus 5cm}bool finish (
+\begin{DoxyParamCaption}
+\item[{int}]{t1\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{t2\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a804810e22db4f7dfa2123948e53e0211}{}\label{main_8cpp_a804810e22db4f7dfa2123948e53e0211}
+\index{main.\+cpp@{main.\+cpp}!index@{index}}
+\index{index@{index}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{index(int)}{index(int)}}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ index (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a9823ed0f5f423a71e59a4d30336da4c8}{}\label{main_8cpp_a9823ed0f5f423a71e59a4d30336da4c8}
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$$\ast$argv)}{main(int argc, char **argv)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+\index{main.\+cpp@{main.\+cpp}!name@{name}}
+\index{name@{name}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{name(char p[], const int N\+S\+I\+Z\+E)}{name(char p[], const int NSIZE)}}]{\setlength{\rightskip}{0pt plus 5cm}void name (
+\begin{DoxyParamCaption}
+\item[{char}]{p\mbox{[}$\,$\mbox{]}, }
+\item[{const int}]{N\+S\+I\+ZE}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ac58a6e1d61400fbd9ca9429e4c822319}{}\label{main_8cpp_ac58a6e1d61400fbd9ca9429e4c822319}
+\index{main.\+cpp@{main.\+cpp}!ply1\+Lft@{ply1\+Lft}}
+\index{ply1\+Lft@{ply1\+Lft}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{ply1\+Lft(\+Card $\ast$, bool, int[], int)}{ply1Lft(Card *, bool, int[], int)}}]{\setlength{\rightskip}{0pt plus 5cm}void ply1\+Lft (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{bool}]{p, }
+\item[{int}]{t\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ad8c775de7c0fa73e60f6ca9ecc3ef9d0}{}\label{main_8cpp_ad8c775de7c0fa73e60f6ca9ecc3ef9d0}
+\index{main.\+cpp@{main.\+cpp}!ply2\+Lft@{ply2\+Lft}}
+\index{ply2\+Lft@{ply2\+Lft}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{ply2\+Lft(\+Card $\ast$, bool, int[], int)}{ply2Lft(Card *, bool, int[], int)}}]{\setlength{\rightskip}{0pt plus 5cm}void ply2\+Lft (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{bool}]{p, }
+\item[{int}]{t\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a973f1eea5100a16335753a3c3e4d47af}{}\label{main_8cpp_a973f1eea5100a16335753a3c3e4d47af}
+\index{main.\+cpp@{main.\+cpp}!pnt\+Sfar@{pnt\+Sfar}}
+\index{pnt\+Sfar@{pnt\+Sfar}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{pnt\+Sfar(int, int)}{pntSfar(int, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void pnt\+Sfar (
+\begin{DoxyParamCaption}
+\item[{int}]{p1, }
+\item[{int}]{p2}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_aa39832acaaec1e70f0e340d8052bc719}{}\label{main_8cpp_aa39832acaaec1e70f0e340d8052bc719}
+\index{main.\+cpp@{main.\+cpp}!rw\+Swap1@{rw\+Swap1}}
+\index{rw\+Swap1@{rw\+Swap1}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{rw\+Swap1(\+Card $\ast$, int)}{rwSwap1(Card *, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void rw\+Swap1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a75fd8251c249946719f55b92e16510ae}{}\label{main_8cpp_a75fd8251c249946719f55b92e16510ae}
+\index{main.\+cpp@{main.\+cpp}!rw\+Swap2@{rw\+Swap2}}
+\index{rw\+Swap2@{rw\+Swap2}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{rw\+Swap2(\+Card $\ast$, int)}{rwSwap2(Card *, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void rw\+Swap2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a1108d41b0185ef77633a3d911ea975df}{}\label{main_8cpp_a1108d41b0185ef77633a3d911ea975df}
+\index{main.\+cpp@{main.\+cpp}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{shuffle(int $\ast$, int)}{shuffle(int *, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void shuffle (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{ind, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ad37e2c912e6a5d19f98a07b181fc05d7}{}\label{main_8cpp_ad37e2c912e6a5d19f98a07b181fc05d7}
+\index{main.\+cpp@{main.\+cpp}!shw\+Both@{shw\+Both}}
+\index{shw\+Both@{shw\+Both}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{shw\+Both(\+Card $\ast$, char)}{shwBoth(Card *, char)}}]{\setlength{\rightskip}{0pt plus 5cm}void shw\+Both (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{char}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ad2275c8f6e05493e36030978fd37be19}{}\label{main_8cpp_ad2275c8f6e05493e36030978fd37be19}
+\index{main.\+cpp@{main.\+cpp}!shw\+Crd1@{shw\+Crd1}}
+\index{shw\+Crd1@{shw\+Crd1}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{shw\+Crd1(\+Card $\ast$, char)}{shwCrd1(Card *, char)}}]{\setlength{\rightskip}{0pt plus 5cm}void shw\+Crd1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{char}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_af94d039de9785b668e79867ad8855bc8}{}\label{main_8cpp_af94d039de9785b668e79867ad8855bc8}
+\index{main.\+cpp@{main.\+cpp}!shw\+Crd2@{shw\+Crd2}}
+\index{shw\+Crd2@{shw\+Crd2}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{shw\+Crd2(\+Card $\ast$, char)}{shwCrd2(Card *, char)}}]{\setlength{\rightskip}{0pt plus 5cm}void shw\+Crd2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{char}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_aa8cbd9d7f3b513aca104261d4a7328de}{}\label{main_8cpp_aa8cbd9d7f3b513aca104261d4a7328de}
+\index{main.\+cpp@{main.\+cpp}!shw\+Play@{shw\+Play}}
+\index{shw\+Play@{shw\+Play}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{shw\+Play(\+Card $\ast$, bool, int[], int[], int)}{shwPlay(Card *, bool, int[], int[], int)}}]{\setlength{\rightskip}{0pt plus 5cm}void shw\+Play (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{bool}]{p, }
+\item[{int}]{t1\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{t2\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ac1792aeb630e39f33a7b4119e2d7892e}{}\label{main_8cpp_ac1792aeb630e39f33a7b4119e2d7892e}
+\index{main.\+cpp@{main.\+cpp}!shw\+Ply1@{shw\+Ply1}}
+\index{shw\+Ply1@{shw\+Ply1}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{shw\+Ply1(\+Card $\ast$, int[], int)}{shwPly1(Card *, int[], int)}}]{\setlength{\rightskip}{0pt plus 5cm}void shw\+Ply1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{int}]{t\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a054138f9e47083ebe11e05b56c206cda}{}\label{main_8cpp_a054138f9e47083ebe11e05b56c206cda}
+\index{main.\+cpp@{main.\+cpp}!shw\+Ply2@{shw\+Ply2}}
+\index{shw\+Ply2@{shw\+Ply2}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{shw\+Ply2(\+Card $\ast$, int[], int)}{shwPly2(Card *, int[], int)}}]{\setlength{\rightskip}{0pt plus 5cm}void shw\+Ply2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{int}]{t\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_abe098fd907fd6bb9246fdc356a372688}{}\label{main_8cpp_abe098fd907fd6bb9246fdc356a372688}
+\index{main.\+cpp@{main.\+cpp}!srt\+Ary@{srt\+Ary}}
+\index{srt\+Ary@{srt\+Ary}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{srt\+Ary(\+Card $\ast$, int)}{srtAry(Card *, int)}}]{\setlength{\rightskip}{0pt plus 5cm}void srt\+Ary (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_af552d168803dcb6248ff0db7e04004da}{}\label{main_8cpp_af552d168803dcb6248ff0db7e04004da}
+\index{main.\+cpp@{main.\+cpp}!srt\+Num@{srt\+Num}}
+\index{srt\+Num@{srt\+Num}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{srt\+Num(int[], int)}{srtNum(int[], int)}}]{\setlength{\rightskip}{0pt plus 5cm}void srt\+Num (
+\begin{DoxyParamCaption}
+\item[{int}]{t\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a0ed206b3e27737b82561e7e7f66aaa92}{}\label{main_8cpp_a0ed206b3e27737b82561e7e7f66aaa92}
+\index{main.\+cpp@{main.\+cpp}!valid8@{valid8}}
+\index{valid8@{valid8}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{valid8(\+Card $\ast$, short, short, bool)}{valid8(Card *, short, short, bool)}}]{\setlength{\rightskip}{0pt plus 5cm}bool valid8 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{short}]{frst, }
+\item[{short}]{scnd, }
+\item[{bool}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a01dbbbcd6513fbd975e5f9ce37867f33}{}\label{main_8cpp_a01dbbbcd6513fbd975e5f9ce37867f33}
+\index{main.\+cpp@{main.\+cpp}!valid82@{valid82}}
+\index{valid82@{valid82}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{valid82(\+Card $\ast$, short, short, bool)}{valid82(Card *, short, short, bool)}}]{\setlength{\rightskip}{0pt plus 5cm}bool valid82 (
+\begin{DoxyParamCaption}
+\item[{{\bf Card} $\ast$}]{d, }
+\item[{short}]{frst, }
+\item[{short}]{scnd, }
+\item[{bool}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ad1ead62302f2ef1e295f2d8cda84ee77}{}\label{main_8cpp_ad1ead62302f2ef1e295f2d8cda84ee77}
