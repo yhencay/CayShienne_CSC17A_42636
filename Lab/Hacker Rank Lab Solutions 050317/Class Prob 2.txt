@@ -1,0 +1,87 @@
+Cay, Shienne (CSC17A - 42636)
+
+class Student {
+    private:
+        int age, standard;
+        string first_name, last_name;
+    public:
+        void set_age(int);
+        void set_standard(int);
+        void set_first_name(string);
+        void set_last_name(string);    
+        string to_string();
+        int get_age();
+        int get_standard();
+        string get_last_name();
+        string get_first_name();
+};
+
+int main() {
+    int age, standard;
+    string first_name, last_name;
+    
+    cin >> age >> first_name >> last_name >> standard;
+    
+    Student st;
+    st.set_age(age);
+    st.set_standard(standard);
+    st.set_first_name(first_name);
+    st.set_last_name(last_name);
+    
+    cout << st.get_age() << "\n";
+    cout << st.get_last_name() << ", " << st.get_first_name() << "\n";
+    cout << st.get_standard() << "\n";
+    cout << "\n";
+    cout << st.to_string();
+    
+    return 0;
+}
+
+void Student::set_age(int a) {
+    age = a;
+}
+
+void Student::set_standard(int s) {
+    standard = s;
+}
+
+void Student::set_first_name(string fn) {
+    first_name = fn;
+}
+
+void Student::set_last_name(string ln) {
+    last_name = ln;
+}
+
+int Student::get_age() {
+    return age;
+}
+
+int Student::get_standard() {
+    return standard;
+}
+
+string Student::get_first_name() {
+    return first_name;
+}
+
+string Student::get_last_name() {
+    return last_name;
+}
+
+string Student::to_string() {
+    stringstream s1, s2;
+    s1<<age;
+    s2<<standard;
+    string a=s1.str();
+    string b=s2.str();
+    string full="";
+    full+=a;
+    full+=",";
+    full+=first_name;
+    full+=",";
+    full+=last_name;
+    full+=",";
+    full+=b;
+    return full;
+}
