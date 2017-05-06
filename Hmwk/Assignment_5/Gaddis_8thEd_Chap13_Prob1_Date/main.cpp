@@ -17,9 +17,12 @@
 
 //System Libraries
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 //User Libraries
+#include "Date.h"
 
 //Global Constants
 //Such as PI, Vc, -> Math/Science values
@@ -31,13 +34,36 @@ using namespace std;
 //Executable code begins here! Always begins in Main
 int main(int argc, char** argv) {
     //Declare Variables
+    int m, d, y;
     
     //Input Values
+    cout<<"Input Month: ";
+    cin>>m;
+    while(cin.fail()||(m<1)||(m>12)) {
+        cout<<"\nInvalid Input. Try again!"<<endl<<endl;
+        cout<<"Input Month: ";
+        cin.clear();
+        cin>>m;
+    }
+    
+    cout<<"Input Day: ";
+    cin>>d;
+    while(cin.fail()||(d<1)||(d>31)) {
+        cout<<"\nInvalid Input. Try again!"<<endl<<endl;
+        cout<<"Input Day: ";
+        cin.clear();
+        cin>>d;
+    }
+    
+    cout<<"Input Year: ";
+    cin>>y;
     
     //Process by mapping inputs to outputs
+    Date prnDate(m, d, y);
     
     //Output values
-        
+    prnDate.prntD8();
+    
     //Exit stage right! - This is the 'return 0' call
 	
     return 0;
