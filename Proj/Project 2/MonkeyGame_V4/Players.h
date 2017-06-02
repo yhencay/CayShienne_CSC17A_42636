@@ -34,7 +34,7 @@ public:
     ~Player();
     void filVec(vector<string> &, vector<string> &, int [], int []);
     void shwBoth();
- //   virtual void points() = 0;
+    short plyRndG();
     void setDeck(int *);
     void setPly1();
     void setPly2();

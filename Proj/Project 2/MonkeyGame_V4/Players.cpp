@@ -44,16 +44,10 @@ const int Player::getSIZE() {
 const short Player::gtCSIZE() {
     return CSIZE;
 }
-/*
-void Player::setPly1() {
-    cout<<"Player 1 Name: ";
-    cin.getline(p1name, 80);
-}
 
-void Player::setPly2() {
-    cout<<"Player 2 Name: ";
-    cin.getline(p2name, 80);
-}*/
+short Player::plyRndG() {
+    return plyRnd;
+}
 
 short Player::getLft1() {
     return numLft1;
@@ -62,16 +56,6 @@ short Player::getLft1() {
 short Player::getLft2() {
     return numLft2;
 }
-/*
-void Player::points() {
-    cout<<endl<<endl;
-    cout<<"\t==================================="<<endl;
-    cout<<"\t            SCORE BOARD            "<<endl;
-    cout<<"\t==================================="<<endl;
-    cout<<"\t        PLAYER 1 ---- 0 pts."<<endl;
-    cout<<"\t        PLAYER 2 ---- 0 pts."<<endl;
-    cout<<"\t==================================="<<endl<<endl;
-}*/
 
 void Player::shwBoth() {
     cout<<p1name<<"'s Cards"<<endl<<endl;

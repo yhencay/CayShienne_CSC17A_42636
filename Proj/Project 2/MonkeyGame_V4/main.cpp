@@ -25,6 +25,7 @@ using namespace std;
 
 //User Libraries
 #include "Players.h"
+#include "Points.h"
 #include "ElimRnd.h"
 #include "FileRyt.h"
 
@@ -42,17 +43,16 @@ int main(int argc, char** argv) {
     srand(static_cast<unsigned int>(time(0)));
     
     //Declare Variables
-    //Player plyNum;    
-    char name1[80], name2[80];
-    char start, player, discard, yElim, rmz;//Start game, choose player, discard pairing
-    int gmPly1=0, gmPly2=0, p1scor=0,       //Game Play counter
+    char name1[80], name2[80];              //Player Names
+    char start, player, discard, yElim;     //Start game, choose player, discard pairing, eliminate card
+    int gmPly1=0, gmPly2=0, p1scor=0,       //Game Play counter, Player Scores
         p2scor=0, cntr1=1, cntr2=1;         //Count for array number
     int trsh1[28]={}, trsh2[27]={};         //Trash array - where discarded cards are put in
     bool x=true, y=true,                    //LOOPS: x-play game, y-choose player,
-         a=true, b=true, c=true,            //a-card elimination, b-pair discard, c-turn elimination
+         a=true, b=true, c=true,            //a-card elimination, b-pair discard, c-elimination cards from opponents
          change=true, play=true,            //change-pair elimination, play-change player
-         end=true, elim=true;               //end-end all loop for score tally
-    short frst, scnd, pick, pair;           //1st Card, 2nd Card
+         end=true, elim=true;               //end-end all loop for score tally, elim is for eliminating leftover pair of cards in player's hands
+    short frst, scnd, pick, pair;           //1st Card, 2nd Card, Pick from opponent, Your hand
   
     cout<<"\t\tWelcome to the Monkey Game!"<<endl<<endl;
     cout<<"Mechanics: There are two players in the game and the cards are\n"
@@ -68,16 +68,16 @@ int main(int argc, char** argv) {
         cout<<"\nCHOICE: ";
         cin>>start;
         if (start=='y'||start=='Y') x=false;                        //If they chose to play, get to next loop
-        else if (start=='n'||start=='N') return 0;
+        else if (start=='n'||start=='N') return 0;                  //If no, end game
         else {
-            cout<<"\nYou can only choose Y or N!"<<endl<<endl;     //Invalidate if input isn't 'Y' or 'N'
+            cout<<"\nYou can only choose Y or N!"<<endl<<endl;      //Invalidate if input isn't 'Y' or 'N'
             cin.clear();
         }
     } while(x);             //Continue loop if x remains true
     
     do {
         cout<<"\n             PLAY GAME AS:"<<endl<<endl;
-        cout<<"     1 - Player 1 | 2 - Player 2"<<endl;             //Prompt user to choose player
+        cout<<"     1 - Player 1 | 2 - Player 2"<<endl;             //Prompt user to choose player to play as
         cout<<"              Q - QUIT"<<endl;
         cout<<"\nCHOICE: ";
         cin>>player;
@@ -101,7 +101,7 @@ int main(int argc, char** argv) {
         cout<<endl;
         cout<<"Player 1 Name: ";
         cin.getline(name1, 80);
-        cout<<"Player 2 Name: ";
+        cout<<"Player 2 Name: ";            //Prompt user to enter name
         cin.getline(name2, 80);
     }
     else {
@@ -112,23 +112,23 @@ int main(int argc, char** argv) {
         cin.getline(name1, 80);
     }
     
-    Player plyNum(name1, name2);
+    Player plyNum(name1, name2);            //Create object of player using names as parameter
     
     cout<<"\nCards have been dispersed!"<<endl<<endl;
  
-    plyNum.shwBoth();
+    plyNum.shwBoth();                       //Show both cards anonymously
     
     cout<<"Press ENTER to start game!"<<endl;
     cin.get();
     
-    cout<<"ROUND 1 - Discard all pairs!"<<endl;
-    ++plyNum;
+    ++plyNum;                               //Use overload operator to indicate round
+    cout<<"ROUND "<<plyNum.plyRndG()<<" - Discard all pairs!"<<endl;
     
     do {                //Start first part of the game - loop hand card elimination
         if (gmPly1==1&&gmPly2==1) change=false;             //If each player had their turn, exit elimination loop
         else {
-            plyNum.shwCrd(play);
-            a=true;
+            plyNum.shwCrd(play);                            //Show card of the user current playing whether Player or Player 2
+            a=true;                                         //Set a true for player change
             do {                                            //Start elimination loop
                 cout<<"Note: To quit entire game, input the same number for 1st card & 2nd card."<<endl;
                 cout<<"If there's no more pair available, input '0' in both cards. To eliminate"<<endl;     //Explain rules
@@ -142,7 +142,7 @@ int main(int argc, char** argv) {
                 cin>>scnd;                      //Prompt user for second card
                 if (frst<0||frst>27||scnd<0||scnd>27) {             //If any input is less than 0 or greater than 26, invalidate!
                     cout<<"\nNumber unidentified!"<<endl<<endl;
-                    if (play) plyNum.shwLeft(play, trsh1);
+                    if (play) plyNum.shwLeft(play, trsh1);          //Show card again based on player playing
                     else plyNum.shwLeft(play, trsh2);
                 }
                 else {
@@ -160,8 +160,8 @@ int main(int argc, char** argv) {
                     else if (frst==scnd) return 0;              //If input is the same except 0, quit game play
                     else {                              //If input is none other than above, check player
                         if (play) {                     //If player 1
-                            if (check(trsh1, frst, scnd, 28)) {    //Check if input has already been used
-                                if (plyNum.valid8(frst, scnd, play)) {   //If not, validate if cards are a pair
+                            if (check(trsh1, frst, scnd, 28)) {         //Check if input has already been used
+                                if (plyNum.valid8(frst, scnd, play)) {  //If not, validate if cards are a pair
                                     trsh1[cntr1]=frst; cntr1++;         //If cards are a pair, add to trash array
                                     trsh1[cntr1]=scnd; cntr1++;
                                     cout<<"\nYou got it!"<<endl;
@@ -174,7 +174,7 @@ int main(int argc, char** argv) {
                                     p1scor--;
                                 }
                             }
-                            else {                //If input has already been used
+                            else {                                              //If input has already been used
                                 cout<<"\nNumber unidentified!"<<endl<<endl;     //Invalidate and show player cards
                                 plyNum.shwLeft(play, trsh1);
                             }
@@ -211,7 +211,7 @@ int main(int argc, char** argv) {
         }
     } while(change);        //Continue loop if change remains true
     
-    Elimin8 secRnd(name1, name2, p1scor, p2scor);
+    Elimin8 secRnd(name1, name2, p1scor, p2scor);                                   
     secRnd.points();
     plyNum.setLeft(trsh1, trsh2);    
     
@@ -219,7 +219,7 @@ int main(int argc, char** argv) {
     vector<string> plyr2(plyNum.getLft2());
     plyNum.filVec(plyr1, plyr2, trsh1, trsh2);
     ++plyNum;
-    cout<<"ROUND 2 - ELIMINATE ALL CARDS"<<endl<<endl;
+    cout<<"ROUND "<<plyNum.plyRndG()<<" - ELIMINATE ALL CARDS"<<endl<<endl;
     cout<<"TOSS COIN to see who goes first!"<<endl<<endl
         <<"HEADS - PLAYER 1 | TAILS - PLAYER 2"<<endl<<endl;
     cin.ignore(256, '\n');
