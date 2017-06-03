@@ -14,9 +14,9 @@
 #ifndef POINTS_H
 #define POINTS_H
 
-class Pnts {
+class Pnts {        //Abstract Class inherited by Eliminate Class
 public:
-    virtual void points()=0;
+    virtual void points()=0;    //Pure virtual function
 };
 
 #endif /* POINTS_H */

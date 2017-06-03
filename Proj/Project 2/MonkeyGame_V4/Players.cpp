@@ -38,13 +38,6 @@ Player::~Player() {
     delete deck;
 }
 
-const int Player::getSIZE() {
-    return SIZE;
-}
-const short Player::gtCSIZE() {
-    return CSIZE;
-}
-
 short Player::plyRndG() {
     return plyRnd;
 }
@@ -281,10 +274,6 @@ Card *Player::filDeck(int *rnd) {
     }
     
     return d;
-}
-
-int *Player::getRndm() {
-    return random;
 }
 
 string Player::getNme1() {

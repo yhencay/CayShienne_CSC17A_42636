@@ -17,10 +17,12 @@
  */
 
 //System Libraries
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <string>
+#include <iostream> //Input/Output Stream
+#include <vector>   //Vector Library
+#include <fstream>  //File Stream
+#include <string>   //String Library
+#include <ctime>    //Time Library
+#include <cstdlib>  //C Standard Library
 using namespace std;
 
 //User Libraries
@@ -96,6 +98,7 @@ int main(int argc, char** argv) {
         }
     } while(y);             //Continue loop if y remains true
     
+    //Input Values
     cin.ignore(256, '\n');
     if (play) {
         cout<<endl;
@@ -124,6 +127,7 @@ int main(int argc, char** argv) {
     ++plyNum;                               //Use overload operator to indicate round
     cout<<"ROUND "<<plyNum.plyRndG()<<" - Discard all pairs!"<<endl;
     
+    //Process by mapping inputs to outputs
     do {                //Start first part of the game - loop hand card elimination
         if (gmPly1==1&&gmPly2==1) change=false;             //If each player had their turn, exit elimination loop
         else {
@@ -211,46 +215,45 @@ int main(int argc, char** argv) {
         }
     } while(change);        //Continue loop if change remains true
     
-    Elimin8 secRnd(name1, name2, p1scor, p2scor);                                   
-    secRnd.points();
-    plyNum.setLeft(trsh1, trsh2);    
-    
-    vector<string> plyr1(plyNum.getLft1());
-    vector<string> plyr2(plyNum.getLft2());
-    plyNum.filVec(plyr1, plyr2, trsh1, trsh2);
-    ++plyNum;
-    cout<<"ROUND "<<plyNum.plyRndG()<<" - ELIMINATE ALL CARDS"<<endl<<endl;
-    cout<<"TOSS COIN to see who goes first!"<<endl<<endl
-        <<"HEADS - PLAYER 1 | TAILS - PLAYER 2"<<endl<<endl;
+    Elimin8 secRnd(p1scor, p2scor);                     //Create Eliminate second round object              
     cin.ignore(256, '\n');
+    secRnd.points();                                    //Show current points
+    plyNum.setLeft(trsh1, trsh2);                       //Show cards left from player's hand
+    vector<string> plyr1(plyNum.getLft1());             //Create Vector of strings for second round elimination
+    vector<string> plyr2(plyNum.getLft2());
+    ++plyNum;       //Increment round play
+    plyNum.filVec(plyr1, plyr2, trsh1, trsh2);          //Fill the created vectors with cards left in players hand
+    
+    cout<<"ROUND "<<plyNum.plyRndG()<<" - ELIMINATE ALL CARDS"<<endl<<endl;     //Show play round
+    cout<<"TOSS COIN to see who goes first!"<<endl<<endl                    //Toss coin to determine who's first
+        <<"HEADS - PLAYER 1 | TAILS - PLAYER 2"<<endl<<endl;
     cout<<"Press ENTER to proceed!"<<endl<<endl;    
     cin.get();
-    unsigned short coin=rand()%2+1;
-    if (coin==1) {
+    unsigned short coin=rand()%2+1;                 //Use random generator for coin tossing
+    if (coin==1) {                      //If heads, player 1 goes first
         cout<<"HEADS! "<<plyNum.getNme1()<<" goes first!"<<endl<<endl;
         play=true;
     }
-    else {
+    else {                          //If tails, player 2 goes first
         cout<<"TAILS! "<<plyNum.getNme2()<<" goes first!"<<endl<<endl;
         play=false;
     }
     
-    secRnd.shwCrds(plyr1, plyr2);
-    
+    secRnd.shwCrds(plyr1, plyr2);       //Show cards anonymously
     cout<<endl;
     
     do {
-        if (plyr1.size()==1||plyr2.size()==1) end=false;
+        if (plyr1.size()==1||plyr2.size()==1) end=false;    //If a player discards all of his or her cards, end loop 
         else {
-            gmPly1=0; gmPly2=0;
-            b=true;
+            gmPly1=0; gmPly2=0;     //Reset gameplay counter;
+            b=true;                 //Set b for additional card as true
             do { 
-                if (play) cout<<endl<<plyNum.getNme1()<<"'s Turn"<<endl;
+                if (play) cout<<endl<<plyNum.getNme1()<<"'s Turn"<<endl;        //Show whoever players' turn is based on coin toss
                 else cout<<endl<<plyNum.getNme2()<<"'s Turn"<<endl;
                 secRnd.elimCrd(plyr1, plyr2, play);
-                cout<<"Would you like to discard a pair in your hand?"<<endl;
+                cout<<"Would you like to discard a pair in your hand?"<<endl;       //Ask If they have remaining cards in hand to discard
                 cout<<"             Y - Yes | N - No                 "<<endl;
-                cout<<"CHOICE: ";
+                cout<<"CHOICE: ";       //Prompt user for answer
                 cin>>discard;
                 if (discard=='Y'||discard=='y') {       //If yes, prompt entering the two cards
                     cout<<"\nInput corresponding number."<<endl<<endl;
@@ -260,10 +263,10 @@ int main(int argc, char** argv) {
                     cin>>scnd;
                     if (frst==0&&scnd==0) return 0;
                     if (play) {                     //If player 1
-                        if (frst<plyr1.size()&&frst>0&&scnd>0&&scnd<plyr1.size()) {    //Check if input has already been used
-                            if (secRnd.valid8(plyr1, plyr2, frst, scnd, play)) {
+                        if (frst<plyr1.size()&&frst>0&&scnd>0&&scnd<plyr1.size()) {    //Check if number input is on the limit
+                            if (secRnd.valid8(plyr1, plyr2, frst, scnd, play)) {        //If yes, check if it is a pair
                                 if (frst>scnd) {
-                                    plyr1.erase(plyr1.begin()+frst);
+                                    plyr1.erase(plyr1.begin()+frst);                //If it is, erase or eliminate card in vector
                                     plyr1.erase(plyr1.begin()+scnd);
                                 }
                                 else {
@@ -272,16 +275,16 @@ int main(int argc, char** argv) {
                                 }
                             }
                             else {
-                                cout<<"\nIt's not a pair!\n\n";
-                                p1scor--;
+                                cout<<"\nIt's not a pair!\n\n";     //If it's not a pair, invalidate
+                                p1scor--;                           //Deduct 1 point in score
                             }
                         }
                         else {
-                            cout<<"\nNumber unidentified!\n\n";
+                            cout<<"\nNumber unidentified!\n\n";     //If went over the limit, show number unidentified
                         }
                     }
                     else {
-                        if (frst<plyr2.size()&&frst>0&&scnd>0&&scnd<plyr2.size()) {    //Check if input has already been used
+                        if (frst<plyr2.size()&&frst>0&&scnd>0&&scnd<plyr2.size()) {    //Do the same if player is player 2
                             if (secRnd.valid8(plyr1, plyr2, frst, scnd, play)) {
                                 if (frst>scnd) {
                                     plyr2.erase(plyr2.begin()+frst);
@@ -302,16 +305,16 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
-                else if (discard=='N'||discard=='n') {
+                else if (discard=='N'||discard=='n') {      //If player chose not to discard
                     if (play) {
-                        gmPly1++;
+                        gmPly1++;                   //Increment Game counter and change player
                         play=false;
                     }
                     else {
                         gmPly2++;
                         play=true;
                     }
-                    if (gmPly1==1&&gmPly2==1) b=false;      //If no, exit discarding loop
+                    if (gmPly1==1&&gmPly2==1) b=false;      //If both game play counter meets requirements, exit loop by setting b as false
                 }
                 else {
                     cout<<"\nYou can only choose Y or N!"<<endl<<endl;
@@ -320,12 +323,12 @@ int main(int argc, char** argv) {
                 }
             }while (b);
             c=true;     //Declare c as true
-            if (play) play=false;
+            if (play) play=false;   //Change back player to the real chronology
             else play=true;
-            gmPly1=0; gmPly2=0;
+            gmPly1=0; gmPly2=0;     //reset game play counter
             do {
                 if (plyr1.size()==1||plyr2.size()==1) {
-                    end=false;
+                    end=false;      //if there's no cards left for one player, end all loop
                     c=false;
                 }
                 else {
@@ -336,7 +339,7 @@ int main(int argc, char** argv) {
                     cout<<"\nNote: Try to eliminate card in your hands as you pick one card from"<<endl;
                     cout<<"  your opponent. The system will show you the card you picked. Choose"<<endl
                         <<"  the pair in accordance to your cards. If there's no pair in hand, the"<<endl
-                        <<"  card will be added to your hand. If there's a pair, you get 3 points."<<endl   //Explain rules for 2nd part
+                        <<"  card will be added to your hand. If there's a pair, you get 3 points."<<endl   //Explain rules for 2nd part/round
                         <<"  Whoever gets rid of everything in their hands will be the winner even"<<endl
                         <<"  if the other player has a higher point. The objective of the game is "<<endl
                         <<"  eliminate all cards in your hand. WATCH OUT FOR THE MONKEY JOKER (MJ)!"<<endl<<endl;      
@@ -345,7 +348,7 @@ int main(int argc, char** argv) {
                     cin>>pick;                  //Prompt user to input card number from hand
                     while (secRnd.limit(plyr1, plyr2, play, pick)||cin.fail()) {
                         cout<<"\nInvalid Input!\n\n";
-                        cin.clear();
+                        cin.clear();            //Input invalidation
                         cin.ignore(256, '\n');
                         cout<<"Pick a card from opponent's hand: ";
                         cin>>pick;                  //Prompt user to input card number from hand
@@ -355,23 +358,23 @@ int main(int argc, char** argv) {
                         end=false;
                     }
                     else {
-                        secRnd.picked(plyr1, plyr2, play, pick);
+                        secRnd.picked(plyr1, plyr2, play, pick);        //Show the picked card from the opponent
                         elim=true;
                         do {
-                            if (play) cout<<endl<<plyNum.getNme1()<<"'s Turn"<<endl;
+                            if (play) cout<<endl<<plyNum.getNme1()<<"'s Turn"<<endl;    
                             else cout<<endl<<plyNum.getNme2()<<"'s Turn"<<endl;
                             secRnd.elimCrd(plyr1, plyr2, play);                 //Prompt user to input number from opponent's hand
                             cout<<"Is there a pair? Y - YES || N - NO "<<endl<<endl<<"CHOICE: ";
-                            cin>>yElim;
+                            cin>>yElim;             //Prompt user if there is a pair from the picked card to player's hand
                             cout<<endl;
-                            if (yElim=='Y'||yElim=='y') {
+                            if (yElim=='Y'||yElim=='y') {       //If yes, input number corresponding that card
                                 cout<<"Your card: ";
                                 cin>>pair;
-                                if (secRnd.valid82(plyr1, plyr2, pick, pair, play)) {
+                                if (secRnd.valid82(plyr1, plyr2, pick, pair, play)) {       //Validate if it's a pair
                                     if (play) {
                                         plyr2.erase(plyr2.begin()+pick);
-                                        plyr1.erase(plyr1.begin()+pair);
-                                        p1scor++;
+                                        plyr1.erase(plyr1.begin()+pair);        //If it is, score is added and the cards are eliminated
+                                        p1scor++;                               //Then change player
                                         play=false;
                                     }
                                     else {
@@ -384,31 +387,31 @@ int main(int argc, char** argv) {
                                     elim=false;
                                 }
                                 else {
-                                    cout<<"\nIt's not a pair!\n\n";
-                                    if (play) p1scor--;
+                                    cout<<"\nIt's not a pair!\n\n";     //If it's not a pair, let player know
+                                    if (play) p1scor--;                 //Deduct 1 point from their score
                                     else p2scor--;
                                 }
                              }
                             else if (yElim=='n'||yElim=='N') {
-                                bool rmze=true;
+                                bool rmze=true;                     //If there's no pair, ask user where to position in his card the card that is to be added in his hand
                                 short pos;
                                 if (play) {
                                     do {
-                                        cout<<"Position to add card?\n\nCHOICE: ";
+                                        cout<<"Position to add/place card?\n\nCHOICE: ";
                                         cin>>pos;
                                         if (pos<plyr1.size()&&pos>0) rmze=false;
-                                        else {
+                                        else {      //Invalidate if user's input exceed the limit
                                             cout<<"\nPosition must be between 0 and "<<plyr1.size()<<"!"<<endl<<endl;
                                             cin.clear();
                                         }
                                     }while(rmze);
                                     auto it=plyr1.insert(plyr1.begin()+pos, plyr2[pick]);
-                                    plyr2.erase(plyr2.begin()+pick);
-                                    play=false;
+                                    plyr2.erase(plyr2.begin()+pick);            //Add card to player's hand
+                                    play=false;         //Change player and exit loop
                                     elim=false;
                                     if (play) gmPly1++;
-                                    else gmPly2++;
-                                    if (gmPly1==1&&gmPly2==1) c=false;
+                                    else gmPly2++;              //Increment game play counter
+                                    if (gmPly1==1&&gmPly2==1) c=false;      //If game play counter meets requirement, exit loop
                                 }
                                 else {
                                     do {
@@ -439,29 +442,24 @@ int main(int argc, char** argv) {
                 }
             } while(c); //Continue loop if c remains true
         }
-    }while (end);
+    }while (end);   //Continue loop until end turns false
     
-    secRnd.setScr(p1scor, p2scor);
-    secRnd.points();
+    //Output values
+    secRnd.setScr(p1scor, p2scor);  //Set new score into class
+    secRnd.points();        //Show score board
     
-    RytFile<short> data(p1scor, p2scor);
+    RytFile<short> data(p1scor, p2scor);        //Create data write class to write all data to text file and binary file
     data.dataRyt(name1, name2, plyr1, plyr2);
     
     cout<<"\nAll data written to a file!"<<endl<<endl;
-    cout<<"Thank you for playing!"<<endl;
-    
-    //Input Values
-    
-    //Process by mapping inputs to outputs
-    
-    //Output values
-        
+    cout<<"Thank you for playing!"<<endl;               //End of Game
+      
     //Exit stage right! - This is the 'return 0' call
 	
     return 0;
 }
 
-bool check(int t[], short one, short two, int s) {
+bool check(int t[], short one, short two, int s) {      //Function heck if both cards entered by user is a pair
     for (int i=1; i<s; i++) {
         if (t[i]==one) return false;
         if (t[i]==two) return false;
