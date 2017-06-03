@@ -94,3 +94,18 @@ Shienne WINS!
 Patricia is the MONKEY!
 Shienne score: 20
 Patricia score: 21
+ALL CARDS ELIMINATED!
+
+Patricia WINS!
+Shienne is the MONKEY!
+Patricia score: 22
+Shienne score: 22
+
+Pat won!
+Shi lost!
+Pat score: 19
+Shi score: 18
+
+IT'S A TIE!
+Shi score: 0
+Pat score: 0

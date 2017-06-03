@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Shienne Cay
- * Created on May 27, 2017, 9:20 PM
+ * Created on June 2, 2017, 9:20 PM
  * Purpose: Project 2
  * 
  * Problem: Computer will shuffle cards and give each player corresponding number
@@ -10,10 +10,9 @@
  *      of your hands with a pair. On the first round, player gets to discard all
  *      pairs in hands. Second round of the game is taking a card from the player 
  *      next to you to discard one in your hand with no pair. Points are still 
- *      counted the same as the first version. If no one discards a pair in hands
- *      after 5 rounds, game ends and player will be determined by points. Player
+ *      counted the same as the first version but only in first round. Player
  *      with the lowest number of points is the MONKEY or player left with the
- *      JOKER if all had no cards left is the MONKEY!
+ *      JOKER if all had no cards left is also the MONKEY!
  */
 
 //System Libraries
@@ -37,7 +36,7 @@ using namespace std;
 //to another
 
 //Function Prototypes
-bool check(int [], short, short, int);
+bool check(int [], short, short, int);      //Function to check pairing of a card
 
 //Executable code begins here! Always begins in Main
 int main(int argc, char** argv) {
@@ -116,14 +115,10 @@ int main(int argc, char** argv) {
     }
     
     Player plyNum(name1, name2);            //Create object of player using names as parameter
-    
     cout<<"\nCards have been dispersed!"<<endl<<endl;
- 
     plyNum.shwBoth();                       //Show both cards anonymously
-    
     cout<<"Press ENTER to start game!"<<endl;
     cin.get();
-    
     ++plyNum;                               //Use overload operator to indicate round
     cout<<"ROUND "<<plyNum.plyRndG()<<" - Discard all pairs!"<<endl;
     
@@ -144,7 +139,7 @@ int main(int argc, char** argv) {
                 cin>>frst;                      //Prompt user for first card
                 cout<<"2nd Card: ";
                 cin>>scnd;                      //Prompt user for second card
-                if (frst<0||frst>27||scnd<0||scnd>27) {             //If any input is less than 0 or greater than 26, invalidate!
+                if (frst<0||frst>27||scnd<0||scnd>27) {             //If any input is less than 0 or greater than 27, invalidate!
                     cout<<"\nNumber unidentified!"<<endl<<endl;
                     if (play) plyNum.shwLeft(play, trsh1);          //Show card again based on player playing
                     else plyNum.shwLeft(play, trsh2);
@@ -446,16 +441,14 @@ int main(int argc, char** argv) {
     
     //Output values
     secRnd.setScr(p1scor, p2scor);  //Set new score into class
-    secRnd.points();        //Show score board
+    secRnd.points();        //Show score board 
     
     RytFile<short> data(p1scor, p2scor);        //Create data write class to write all data to text file and binary file
-    data.dataRyt(name1, name2, plyr1, plyr2);
+    data.dataRyt(name1, name2, plyr1, plyr2);    
     
     cout<<"\nAll data written to a file!"<<endl<<endl;
     cout<<"Thank you for playing!"<<endl;               //End of Game
-      
-    //Exit stage right! - This is the 'return 0' call
-	
+      	
     return 0;
 }
 
